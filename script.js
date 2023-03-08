@@ -7,6 +7,9 @@ let resultado = []
 let palavra = ""
 let dica = ""
 
+let score = 0
+
+
 
 
 //Sorteador de palavras
@@ -75,7 +78,7 @@ function sortear(){
     palavra = palavra.split("")
     console.log(palavra)
   }
-
+  console.log("fim")
 }
 
 sortear()
@@ -104,21 +107,28 @@ criarDiv(palavra)
 function validador(palavra) {
   
   let letra = document.querySelector("#entrada").value
+  document.querySelector("#entrada").value = ""
+  document.querySelector("#entrada").focus()
   letra = letra.toUpperCase()
   
   
   if(palavra.indexOf(letra) == -1){
     //resul negativo
     debitarVida()
+    
+
   } else {
     //resul positivo
     palavra.forEach( (e,i) => {
       if(e == letra) {
         resultado[i] = e
+        score = score + 10
       }
     })
     
     incluirDados()
+    proximaFase()
+    console.log(score)
   }
   
   
@@ -130,9 +140,14 @@ btn.addEventListener("click", () => validador(palavra))
 
 // salvar erro, inclui-lo em um vetor, debitar vida.
 function debitarVida() {
+
+  score = score - 10
+  let scoreHtml = document.querySelector(".score")
+  scoreHtml.textContent = score
+
+
   vida--
-   fiscalizarVida()
-   
+  fiscalizarVida()
   let v = document.querySelector(".vida")
   v.textContent = vida
   
@@ -141,10 +156,14 @@ function debitarVida() {
 // inclusao da letra no campo correspondente
 function incluirDados() {
   let divs = document.querySelectorAll(".quadrado")
+  let scoreHtml = document.querySelector(".score")
   
   divs.forEach( (el,i) => {
     el.textContent = resultado[i]
   })
+
+  scoreHtml.textContent = score
+  console.log(score)
 }
 
 
@@ -155,7 +174,31 @@ function incluirDados() {
    }
  }
  
- // Determinador vitória.
+ // Determinar próxima fase.
+function proximaFase(){
+  let contador = 0
+
+  resultado.forEach( (e) => {
+    if(e != undefined ) {
+      contador++
+    }
+  })
+
+  if(contador == palavra.length) {
+    console.log(contador,palavra.length)
+    resultado = []
+    palavra = []
+
+    let divs = document.querySelectorAll(".quadrado")
+    divs.forEach((e) => {
+      e.parentElement.removeChild(e)
+    })
+    
+    sortear()
+    criarDiv(palavra)
+    
+  }
+}
  
 
 

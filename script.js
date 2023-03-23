@@ -9,6 +9,8 @@ let dica = ""
 
 let score = 0
 
+let acertos = 0
+
 
 
 
@@ -88,6 +90,13 @@ function criarDica(y) {
   let dica = document.querySelector(".dica")
   dica.textContent = y
 }
+
+//criar / atualizar qtd palavra
+function setQtdPalavras() {
+  let alvo = document.querySelector(".qtd-palavras")
+  alvo.textContent = acertos
+}
+setQtdPalavras()
 
 // criar divs deacordo com o tamnaho da palavra.
 function criarDiv(x) {
@@ -196,6 +205,8 @@ function proximaFase(){
     
     sortear()
     criarDiv(palavra)
+    acertos++
+    setQtdPalavras()
     
   }
 }

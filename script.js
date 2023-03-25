@@ -5,7 +5,6 @@ let resultado = []
 
 
 let palavra = ""
-let dica = ""
 
 let score = 0
 
@@ -18,69 +17,35 @@ let acertos = 0
 function sortear(){
 
   let dados = {
-    animais:["urso","cavalo","leopardo"],
+    animais:["urso","cavalo","leopardo","neko","Cachorro", "Pantera"],
     cidades: ["guarulhos","arujá","itaqua"],
-    animes: ["Naruto","Boruto","Gantz"]
-  
+    animes: ["Naruto","Boruto","Gantz","Dorohedoro","Dragonball","FullMetal"],
+    objetos: ["Cadeira", "Mesa", "liquidificador", "Escada", "Controle", "Chinelo", "Pote"]
   }
   
-  function sortearClasse() {
-  
-    //Categoria 
-    let categorias = Object.keys(dados)
-    console.log(categorias)
-  
-    let tamCategorias = categorias.length 
-    console.log(tamCategorias)
-  
-    let catAleNum = Math.floor(Math.random()*tamCategorias)
-    console.log(catAleNum)
-  
-  
-    
-    
-    if(catAleNum == 0) {
-      sortearPalavra(dados.animais)
-      criarDica(categorias[0])
-  
-    } else if (catAleNum == 1) {
-      sortearPalavra(dados.cidades)
-      criarDica(categorias[1])
-  
-    } else if(catAleNum == 2) {
-      sortearPalavra(dados.animes)
-      criarDica(categorias[2])
-    }
-    
+  let categoria = ""
+
+  //O que o usuario selecionou?
+  let info = JSON.parse(localStorage.info)
+  console.log(info)
+
+  if(info.categoria == 'aleatorio'){
+    categoria = Object.keys(dados)[Math.floor(Math.random()*Object.keys(dados).length)]
+
+    palavra = dados[categoria][Math.floor(Math.random()*dados[categoria].length)]
+
+  } else {
+    categoria = info.categoria
+    palavra = dados[categoria][Math.floor(Math.random()*dados[categoria].length)]
   }
 
-  sortearClasse()
-  
+  criarDica(categoria)
+  palavra = palavra.toUpperCase()
+  palavra = palavra.split('')
 
-  function sortearPalavra(y) {
-    console.log(y)
+  console.log(palavra)
   
-    let tamY = y.length
-    console.log(tamY)
   
-    let numAle = Math.floor(Math.random()*tamY)
-    console.log(numAle)
-  
-    if(numAle == 0) {
-      palavra = y[0]
-  
-    } else if(numAle == 1) {
-      palavra = y[1]
-  
-    } else if(numAle == 2) {
-      palavra = y[2]
-    }
-
-    palavra = palavra.toUpperCase()
-    palavra = palavra.split("")
-    console.log(palavra)
-  }
-  console.log("fim")
 }
 
 sortear()
@@ -144,7 +109,7 @@ function validador(palavra) {
 }
 
 
-let btn = document.querySelector("#btn")
+let btn = document.querySelector("#btnInformar")
 btn.addEventListener("click", () => validador(palavra))
 
 // salvar erro, inclui-lo em um vetor, debitar vida.

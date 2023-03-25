@@ -1,0 +1,137 @@
+@keyframes btn{
+    0%{
+        box-shadow: 0px 0px 0px 0px white;
+    }
+    100%{
+        box-shadow: 0px 0px 15px 5px white;
+    }
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body{
+    background-color: black;
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    height: 300px;
+    padding: 15px;
+}
+.container h1{
+    text-align: center;
+    font-size: 2.7em;
+}
+
+.container button{
+    display: block;
+    width: 130px;
+    height: 60px;
+    background-color: black;
+    border: 4px solid white;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 80px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1em;
+    color: white;
+    font-size: 1.5em;
+}
+
+.container>button{
+    animation-name: btn;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.container button:active{
+    background-color: white;
+    color: black;
+    
+}
+
+/*====================== Componente Modos ======================*/
+
+.componente{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border: 4px solid gray;
+    background-color: black;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Courier New', Courier, monospace;
+}
+.componente.active{
+    display: flex;
+}
+
+.componente>form{
+    border: 2px solid white;
+    width: 90vw;
+    height: 90vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.componente div.classe:not(.b){
+    margin-bottom: 70px;
+}
+
+.componente div.classe h3{
+    font-size: 1.6em;
+    text-align: center;
+}
+
+.componente div.classe div.op{
+    margin-top: 10px;
+    min-width: 350px;
+    max-width: 750px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.componente div.classe div.op label{
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    width: 130px;
+}
+
+.componente div.classe div.op.a label{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+} 
+.componente div.classe div.op.b label{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+} 
+
+.componente div.classe div.op label input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    margin-left: 0;
+}

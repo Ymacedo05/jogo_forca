@@ -5,57 +5,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Forca</title>
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            text-decoration: none;
-        }
+    <link rel="stylesheet" href="index.css">
 
-        body{
-            background-color: black;
-            color: white;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container{
-            height: 300px;
-            padding: 15px;
-        }
-        .container h1{
-            text-align: center;
-        }
-
-        .container button{
-            display: block;
-            width: 120px;
-            height: 50px;
-            background-color: black;
-            border: 2px solid white;
-            border-radius: 20px;
-            margin: auto;
-            margin-top: 80px;
-        }
-        .container button a{
-            color: white;
-            font-size: 1.5em;
-        }
-
-        .container button:active{
-            box-shadow: 0px 0px 10px 2px white;
-        }
-
-    </style>
 </head>
 <body>
     <div class="container">
         <h1>Jogo da Forca</h2>
-        <button><a href="jogo.html">Play</a></button>
+        <button onclick="iniciar()">Play</button>
+
+        <section class="componente">     
+            <form id="form">
+                
+                <div class="classe a">
+                    <h3>Nivel de dificuldade</h3>
+                    <div class="op a">
+                        <label >
+                            <Span>Facil</Span>
+                            <input type="checkbox" name="dificuldade" value = "facil">
+                        </label>
+                        <label >
+                            <Span>Normal</Span>
+                            <input type="checkbox" name="dificuldade"  value = "normal">
+                        </label>
+                        <label >
+                            <Span>Dificil</Span>
+                            <input type="checkbox" name="dificuldade"  value = "dificl">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="classe b">
+                    <h3>Categoria desejada</h3>
+                    <div class="op b">
+                        <label >
+                            <Span>Animais</Span>
+                            <input type="checkbox" name="categoria" value="animais">
+                        </label>
+
+                        <label >
+                            <Span>Cidades</Span>
+                            <input type="checkbox" name="categoria" value="cidades">
+                        </label>
+
+                        <label >
+                            <Span>Animes</Span>
+                            <input type="checkbox" name="categoria" value="animes">
+                        </label>
+
+                        <label >
+                            <Span>Objetos</Span>
+                            <input type="checkbox" name="categoria" value="objetos">
+                        </label>
+
+                        <label >
+                            <Span>Aleatório</Span>
+                            <input type="checkbox" name="categoria" value="aleatorio">
+                        </label>
+                    </div>
+                </di>
+            </form>
+
+            <button id="btn-comecar">Começar</button>
+
+        </section>
     </div>
+
+    <script src="index.js"></script>
 </body>
 </html>

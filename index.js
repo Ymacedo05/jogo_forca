@@ -1,3 +1,5 @@
+localStorage.clear()
+
 //Inicialização do componente modos
 function iniciar() {
     document.querySelector(".componente").classList.add("active")

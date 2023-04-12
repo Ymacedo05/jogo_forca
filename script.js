@@ -140,11 +140,25 @@ function incluirDados() {
   console.log(score)
 }
 
+// Desistir
+
+let desis = document.querySelector('#btnDesistir')
+desis.addEventListener('click', () => desistir())
+
+function desistir() {
+  vida = 0
+  fiscalizarVida()
+  
+}
 
 // Determinador derrota.
  function fiscalizarVida() {
    if(vida <= 0) {
      window.location.href = "over.html"
+
+     
+     let over = [palavra.join(''), score]
+     localStorage.setItem("over", JSON.stringify(over))
    }
  }
  
